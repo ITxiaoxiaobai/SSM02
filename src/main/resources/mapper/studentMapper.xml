@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssm.dao.StudentDao">
+    <sql id="cols">
+        a.id as id,
+        a.name as name,
+        a.age as age,
+        a.sex as sex,
+        a.account as account,
+        a.password as password,
+        a.class_id as "gradeClass.id",
+        a.create_user as "createUser.id",
+        a.create_time as createTime,
+        a.update_user as "updateUser.id",
+        a.update_time as updateTime
+    </sql>
+    <select id="get" resultType="Student">
+        select <include refid="cols"></include> from student a where a.id=#{id}
+    </select>
+</mapper>
